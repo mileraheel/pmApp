@@ -61,16 +61,18 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.1.0"
         compile ':cache:1.1.6'
-        compile ":asset-pipeline:1.8.7"
+        //compile ":asset-pipeline:1.8.7"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.5.3" // or ":hibernate:3.6.10.15"
         //runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
         compile ":mysql-connectorj:5.1.22.1"
-        compile ":spring-security-core:2.0-RC3"
-        compile ":spring-security-rest:1.4.0.M2"
+        //compile ":spring-security-core:2.0-RC3"
+        //compile ":spring-security-rest:1.4.0.M2"
         compile ":codenarc:0.21"
+
+        runtime ":cors:1.1.6"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.7.4"

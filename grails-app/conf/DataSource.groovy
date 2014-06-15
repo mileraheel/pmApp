@@ -18,7 +18,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/pm?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost/projectManagementApp?useUnicode=yes&characterEncoding=UTF-8"
         }
     }
     test {

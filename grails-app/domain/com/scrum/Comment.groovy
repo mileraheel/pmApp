@@ -14,6 +14,7 @@ class Comment {
     /* Comment fields */
     String  description
     User    user
+    Task task
 
     /* Automatic timestamping of GORM */
     Date    dateCreated

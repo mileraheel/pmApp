@@ -29,5 +29,6 @@ class Project {
     static constraints = {
         name blank:false
         description blank:false
+        createdBy nullable:true
     }
 }

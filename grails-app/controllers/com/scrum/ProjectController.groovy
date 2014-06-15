@@ -1,5 +1,7 @@
 package com.scrum
 
+import com.scrum.auth.User
+import grails.converters.JSON
 import grails.rest.RestfulController
 import grails.transaction.Transactional
 
@@ -24,23 +26,13 @@ class ProjectController extends RestfulController<Project>{
 
     @Transactional
     def save() {
-        log.info("Project save action called......");
-        def projectInstance = createResource(params);
-        if (projectInstance == null) {
-            notFound()
-            return
-        }
-
-        projectInstance.createdBy = springSecurityService.getCurrentUser()
-        if (projectInstance.hasErrors()) {
-            respond projectInstance.errors, view:'create'
-            return
-        }
-
-        projectInstance.save flush:true
-
-        //respond projectInstance, [status: CREATED]
-        respond queryForResource(projectInstance.id), [excludes: EXCLUDE_FIELD_LIST]
+        def instance = new Project()
+        instance.name = request.JSON.name
+        instance.description = request.JSON.description
+        def user = User.findByUsername('test@test.com')
+        instance.createdBy=user
+        instance.save(failOnError: true)
+        respond instance, [status: CREATED]
     }
 
     def list(){
@@ -54,6 +46,27 @@ class ProjectController extends RestfulController<Project>{
         }
 
         render status: NOT_FOUND
+    }
 
+    def delete(){
+        println('delete called ${params}')
+        Project instance = Project.get(params.id)
+        instance.delete(flush: true)
+        render status : 200
+    }
+
+    def update() {
+        println('update method called')
+        def instance = new Project()
+        println(request.JSON.id)
+        instance.id = request.JSON.id
+        println(instance.id)
+        instance.name = request.JSON.name
+        instance.description = request.JSON.description
+        def user = User.findByUsername('test@test.com')
+        instance.createdBy=user
+        println(instance)
+        instance.save(failOnError: true,flush: true)
+        respond instance, [status: CREATED]
     }
 }

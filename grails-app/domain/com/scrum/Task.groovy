@@ -30,11 +30,11 @@ class Task {
     static hasMany = [comments: Comment]
 
     static constraints = {
-        title blank: false
+        /*title blank: false
         description blank: false
         priority blank: false
         status blank: false
         assignedTo nullable: false
-        reportedBy nullable: false
+        reportedBy nullable: false*/
     }
 }
